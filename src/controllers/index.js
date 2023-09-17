@@ -1,1 +1,3 @@
-module.exports = {};
+module.exports = {
+  BookingController: require("../controllers/booking-controller"),
+};

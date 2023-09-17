@@ -9,7 +9,8 @@ class BookingRepository {
       const booking = await Booking.create(data);
       return booking;
     } catch (error) {
-      if (error.anem == "SequelizeValidationError") {
+      console.log(error);
+      if (error.name == "SequelizeValidationError") {
         throw new ValidationError();
       }
 
@@ -21,4 +22,17 @@ class BookingRepository {
       );
     }
   }
+
+  async updateBooking(bookingId, data) {
+    try {
+      const response = await Booking.update(data, {
+        where: {
+          id: bookingId,
+        },
+      });
+      return response;
+    } catch (error) {}
+  }
 }
+
+module.exports = BookingRepository;
